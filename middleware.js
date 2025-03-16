@@ -5,8 +5,6 @@ const ExpressError = require("./utils/ExpressError.js");
 const { listingSchema , reviewSchema } = require("./schema.js");
 
 
-
-
 module.exports.isLoggedIn = (req,res,next) => {
     // user log in hai ki nhi ager nhi show error
     if(!req.isAuthenticated()){
