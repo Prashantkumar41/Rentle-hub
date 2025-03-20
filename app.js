@@ -9,7 +9,8 @@ const express = require("express");
 const app = express();
 
 const mongoose = require("mongoose");
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderlust";
+
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
@@ -145,11 +146,15 @@ app.use((err, req, res, next) => {
 
 });
 
-const PORT  = 8080;
-app.listen(PORT, () => {
-  // console.log("server is running");
-  console.log(`Server running at http://localhost:${PORT}/listings`);
-});
+// const PORT  = 8080;
+// app.listen(PORT, () => {
+//   // console.log("server is running");
+//   console.log(`Server running at http://localhost:${PORT}/listings`);
+// });
+
+
+const serverless = require("serverless-http");
+module.exports = serverless(app);
 
 
 
